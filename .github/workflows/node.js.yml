@@ -18,15 +18,6 @@ jobs:
       matrix:
         node-version: [12.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-    
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: password
-        ports:
-          - 3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     env:
       DB_DATABASE: isc
@@ -43,8 +34,9 @@ jobs:
     - run: mysql --host 127.0.0.1 -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} < etc/startup.sql
     - run: mysql --host 127.0.0.1 -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} -e "SHOW DATABASES"
 
-      #This command adds the proper mysql port to the config file
-    - run: node scripts/ci ${{ job.services.mysql.ports['3306'] }} 
-    - run: npm ci
-    - run: npm run build --if-present
+    - env:
+        DB_USER: root
+        DB_PASS: root
+        PORT: 3000
+        SECRET: somesecret
     - run: npm test
