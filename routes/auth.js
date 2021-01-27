@@ -30,8 +30,8 @@ router.post('/', function (req, res, next) {
 });
 
 router.get('/logout', function (req, res) {
+  req.session.destroy();
   req.logout();
-  req.session = null;
   res.redirect('/');
 });
 

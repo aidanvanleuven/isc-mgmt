@@ -10,6 +10,13 @@ var config = require("./db_config.js");
 var expressSession = require('express-session');
 var debug = require('debug')('sc-new:server');
 
+if (process.env.NODE_ENV !== 'production') {
+  require("dotenv").config();  
+}
+
+
+
+
 var indexRouter = require('./routes/index');
 var dashboardRouter = require('./routes/dashboard');
 var authRouter = require('./routes/auth');
@@ -17,7 +24,7 @@ var adminRouter = require('./routes/admin');
 const { info } = require('console');
 
 // For our sessions
-var secret = 'z6[q2MrHb(r_KzS/,Q)cJ:xeP)vyxYR4ASU*bBLVYJ)vE54nwPnJp7hAXyg]mT-@';
+var secret = process.env.SECRET;
 
 // Connection details, supports pooling
 // See db_config.js
