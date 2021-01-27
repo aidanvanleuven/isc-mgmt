@@ -23,10 +23,15 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_ROOT_PASSWORD: whitemocha
+          MYSQL_ROOT_PASSWORD: password
         ports:
           - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    env:
+      DB_DATABASE: isc
+      DB_USER: root
+      DB_PASSWORD: root
 
     steps:
     - uses: actions/checkout@v2
@@ -34,9 +39,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: sudo service mysql start
-    - run: mysql --host 127.0.0.1 --port 3306 -u root -p whitemocha < etc/startup.sql
-    - run: mysql --host 127.0.0.1 --port 3306 -u root -p whitemocha -e "SHOW DATABASES"
+    - run: sudo /etc/init.d/mysql start
+    - run: mysql --host 127.0.0.1 -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} < etc/startup.sql
+    - run: mysql --host 127.0.0.1 -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} -e "SHOW DATABASES"
+
       #This command adds the proper mysql port to the config file
     - run: node scripts/ci ${{ job.services.mysql.ports['3306'] }} 
     - run: npm ci
