@@ -17,3 +17,6 @@ CREATE TABLE users(
 
 INSERT INTO users (UserID, FirstName, LastName, Pin, Privilege)
 VALUES('0', 'Admin', 'Admin', '1234', 'Admin');
+
+INSERT INTO users (UserID, FirstName, LastName, Pin, Privilege)
+VALUES('1', 'User', 'User', '4321', 'User');

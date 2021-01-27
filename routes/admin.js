@@ -157,8 +157,7 @@ function isAuthorized(req, res, next) {
     next();
   } else {
     // render the error page
-    res.status(500);
-    res.render('error', {
+    res.status(401).render('error', {
       message: "Authorization error.",
       error: {
         status: 401,
