@@ -33,10 +33,10 @@ jobs:
     - name: Set up MySQL database
       run: |
       sudo /etc/init.d/mysql start
-      run: mysql --host 127.0.0.1 -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} < etc/startup.sql
-      run: mysql --host 127.0.0.1 -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} -e "SHOW DATABASES"
+      mysql --host 127.0.0.1 -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} < etc/startup.sql
+      mysql --host 127.0.0.1 -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} -e "SHOW DATABASES"
 
     - name: Run tests
       run: |
       npm ci
-      run: DB_USER=root DB_PASS=root PORT=3000 SECRET=somesecret npm test
+      DB_USER=root DB_PASS=root PORT=3000 SECRET=somesecret npm test
