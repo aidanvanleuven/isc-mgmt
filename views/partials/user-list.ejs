@@ -1,0 +1,23 @@
+<div class="text-end mb-3">
+  <button type="button" class="btn btn-success user-new">New User</button>
+</div>
+
+<% users.forEach(function(element, index){ %>
+<div class="row">
+  <div class="col">
+    <p><%= element.LastName %>, <%= element.FirstName %></p>
+    <p>Pin: <%= element.Pin %></p>
+    <p>Access Level: <%= element.Privilege %></p>
+  </div>
+
+  <div class="col">
+    <button type="button" class="btn btn-danger user-remove" data-id="<%= element.UserID %>" <%= (current.UserID == element.UserID)?'disabled':'' %>>Remove</button>
+    <button type="button" class="btn btn-warning user-edit" data-id="<%= element.UserID %>">Edit</button>
+  </div>
+</div>
+
+<% if (index != users.length - 1){ %>
+<hr>
+<% } %>
+
+<% }) %>

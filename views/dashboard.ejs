@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Dashboard</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="container">
+    <h1>Welcome, <%= user.FirstName %> </h1>
+    <div class="text-end mb-3">
+      <a class="btn btn-danger" href="/auth/logout" role="button">Logout</a>
+      <% if (user.Privilege == "Admin"){ %>
+      <a class="btn btn-primary" href="/admin" role="button">Admin Panel</a>
+      <% } %>
+    </div>
+    <input type="text" class="form-control" id="search" placeholder="Search...">
+    <hr>
+
+    <div id="display-area">
+      <%- include('partials/card-list', {"cards": cards}) %>
+    </div>
+  </div>
+
+  <div class="modal fade" id="cardModal" tabindex="-1"></div>
+
+  <script src="/javascripts/bootstrap.bundle.min.js"></script>
+  <script src="/javascripts/jquery.min.js"></script>
+  <script src="/javascripts/dashboard.js"></script>
+
+</body>
+
+</html>

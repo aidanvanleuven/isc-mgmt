@@ -1,0 +1,40 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">New User</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    </div>
+    <div class="modal-body">
+
+      <div class="mb-3">
+        <label for="first-name" class="form-label">First Name:</label>
+        <input type="text" class="form-control" id="user-first-name" value="<%= user.FirstName %>">
+      </div>
+
+      <div class="mb-3">
+        <label for="last-name" class="form-label">Last Name:</label>
+        <input type="text" class="form-control" id="user-last-name" value="<%= user.LastName %>">
+      </div>
+
+      <div class="mb-3">
+        <label for="pin" class="form-label">Pin:</label>
+        <input type="text" class="form-control" id="pin" value="<%= user.Pin %>">
+      </div>
+
+      <div class="mb-3">
+        <label for="access" class="form-label">Access:</label>
+        <select class="form-select" <%= (current.UserID == user.UserID)?'disabled':'' %> id="access">
+          <option value="" <%= (user.Privilege == "")?'selected':'' %>></option>
+          <option value="User" <%= (user.Privilege == "User")?'selected':'' %>>User</option>
+          <option value="Admin" <%= (user.Privilege == "Admin")?'selected':'' %>>Admin</option>
+        </select>
+      </div>
+
+      <p class="text-danger" id="err-msg-user"></p>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" id="user-save" data-id="<%= user.UserID %>">Save changes</button>
+    </div>
+  </div>
+</div>

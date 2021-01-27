@@ -1,0 +1,32 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">New Card</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    </div>
+    <div class="modal-body">
+
+      <div class="mb-3">
+        <label for="first-name" class="form-label">First Name:</label>
+        <input type="text" class="form-control" id="card-first-name" value="<%= card.FirstName %>">
+      </div>
+
+      <div class="mb-3">
+        <label for="last-name" class="form-label">Last Name:</label>
+        <input type="text" class="form-control" id="card-last-name" value="<%= card.LastName %>">
+      </div>
+
+      <label for="balance" class="form-label">Balance:</label>
+      <div class="input-group mb-3">
+        <span class="input-group-text">$</span>
+        <input type="number" class="form-control" id="balance" value="<%= card.Balance %>">
+      </div>
+
+      <p class="text-danger" id="err-msg-card"></p>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" id="card-save" data-id="<%= card.CardID %>">Save changes</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Admin Panel</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="container">
+    <h1>Admin Panel</h1>
+    <div class="text-end">
+      <a href="/auth/logout" type="button" class="btn btn-danger" id="logout">Logout</a>
+      <a href="/dashboard" type="button" class="btn btn-primary" id="dashboard">Dashboard</a>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-3">
+        <div class="list-group">
+          <button class="list-group-item list-group-item-action active" id="users">Users</a>
+            <button class="list-group-item list-group-item-action" id="cards">Cards</a>
+        </div>
+      </div>
+      <div class="col-9">
+        <div id="users-area" class="">
+          <%- include('partials/user-list', {"users": users, "current": current}) %>
+        </div>
+        <div id="cards-area" class="d-none">
+          <%- include('partials/card-list', {"cards": cards, "current": current}) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="cardModal" tabindex="-1"></div>
+    <div class="modal fade" id="userModal" tabindex="-1"></div>
+  </div>
+  <script src="/javascripts/bootstrap.bundle.min.js"></script>
+  <script src="/javascripts/jquery.min.js"></script>
+  <script src="/javascripts/admin.js"></script>
+
+</body>
+
+</html>

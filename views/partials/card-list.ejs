@@ -1,0 +1,22 @@
+<div class="text-end mb-3">
+  <button type="button" class="btn btn-success new-card card-new">New Card</button>
+</div>
+
+<% cards.forEach(function(element, index){ %>
+<div class="card-single">
+  <div class="row">
+    <div class="col">
+      <p class="card-name"><%= element.LastName %>, <%= element.FirstName %></p>
+      <p>Balance: $<%= element.Balance %></p>
+    </div>
+
+    <div class="col">
+      <button type="button" class="btn btn-danger card-remove" data-id="<%= element.CardID %>">Remove</button>
+      <button type="button" class="btn btn-warning card-edit" data-id="<%= element.CardID %>">Edit</button>
+    </div>
+  </div>
+  <% if (index != cards.length - 1){ %>
+  <hr>
+  <% } %>
+</div>
+<% }) %>
