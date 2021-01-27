@@ -1,7 +1,7 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js CI
+name: Run Mocha Tests
 
 on:
   push:
@@ -32,11 +32,11 @@ jobs:
 
     - name: Set up MySQL database
       run: |
-      sudo /etc/init.d/mysql start
-      mysql --host 127.0.0.1 -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} < etc/startup.sql
-      mysql --host 127.0.0.1 -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} -e "SHOW DATABASES"
+        sudo /etc/init.d/mysql start
+        mysql --host 127.0.0.1 -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} < etc/startup.sql
+        mysql --host 127.0.0.1 -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} -e "SHOW DATABASES"
 
     - name: Run tests
       run: |
-      npm ci
-      DB_USER=root DB_PASS=root PORT=3000 SECRET=somesecret npm test
+        npm ci
+        DB_USER=root DB_PASS=root PORT=3000 SECRET=somesecret npm test
