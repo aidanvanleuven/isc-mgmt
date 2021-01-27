@@ -39,4 +39,4 @@ jobs:
     - name: Run tests
       run: |
         npm ci
-        DB_USER=root DB_PASS=root PORT=3000 SECRET=somesecret npm test
+        DB_USER=${{ env.DB_USER }} DB_PASS=${{ env.DB_PASSWORD }} PORT=3000 SECRET=somesecret npm test
