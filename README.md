@@ -14,4 +14,4 @@ Project that mainly performs CRUD operations on a MySQL database. The applicatio
 - Passport.js for authentication
 - MySQL for data storage
 
-Mocha tests are run on pull requests through GitHub actions. The application is (will be) hosted at [https://sc.aidanvanleuven.com](https://sc.aidanvanleuven.com).
+Mocha tests are run on pull requests, and deployment is run on master branch commits, both through GitHub actions. The application is hosted at [https://sc.aidanvanleuven.com](https://sc.aidanvanleuven.com).
