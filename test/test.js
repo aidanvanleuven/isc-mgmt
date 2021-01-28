@@ -1,10 +1,12 @@
 var supertest = require("supertest");
 var should = require("should");
 var app = require("../app");
+fs = require('fs');
 
 // This agent refers to PORT where program is runninng.
 var server = supertest.agent(app);
 
+// No auth
 describe("Not logged in", function() {
   it("render index.ejs", function(done) {
     server.get("/")
@@ -78,6 +80,8 @@ describe("Not logged in", function() {
   });
 });
 
+
+// User level auth
 describe("Normal user login", function() {
   it("redirects to dashboard.ejs", function(done) {
     server.post("/auth")
@@ -138,6 +142,8 @@ describe("Normal user login", function() {
   });
 });
 
+
+// Admin level auth
 describe("Admin user login", function() {
   it("redirects to dashboard.ejs", function(done) {
     server.post("/auth")
@@ -183,7 +189,7 @@ describe("Admin user login", function() {
       });
   });
 
-  it("logs the user out", function(done) {
+  it("logs the admin out", function(done) {
     server.get("/auth/logout")
       .expect("Content-type", /text\/plain/)
       .expect(302)
