@@ -20,6 +20,6 @@ jobs:
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
         script: |
-        cd ~/isc-mgmt
-        git pull
-        pm2 restart sc
+          cd ~/isc-mgmt
+          git pull
+          pm2 restart sc
