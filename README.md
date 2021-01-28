@@ -1,6 +1,6 @@
 # In-Store Credit Management System
 ![Mocha Tests](https://github.com/aidanvanleuven/isc-mgmt/workflows/Mocha%20Tests/badge.svg)
-![Mocha Tests](https://github.com/aidanvanleuven/isc-mgmt/workflows/Deploy/badge.svg)
+![Deploy](https://github.com/aidanvanleuven/isc-mgmt/workflows/Deploy/badge.svg?event=deployment)
 
 Project that mainly performs CRUD operations on a MySQL database. The application uses a PIN only authentication. An admin-level user is the only one that can add other users to the database. By default, the admin user has pin 1234, and the regular user has pin 4321. 
 
